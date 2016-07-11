@@ -1,0 +1,194 @@
+/* 
+Student Info: Name=VijayPanwar, ID=16069
+Subject: CS557C_HW1_Summer_2016
+Author: vijay 
+Filename: hw3.css 
+Date and Time: Jul 4, 2016 5:34:51 PM 
+Project Name: webfrontend 
+*/ 
+/* 
+    Created on : Jul 4, 2016, 5:34:51 PM
+    Author     : vijay
+*/
+
+.header{
+    background-color: #0D2E86;
+    min-height: 90px;
+    text-align: center;
+    width: 100%;
+    border-bottom: 5px solid #4d5057;
+}
+
+.header img {
+    float: left;
+    width: 120px;
+    padding: 10px;
+}
+.navigation ul {
+    list-style: outside none none;
+    margin: 0;
+    text-align: center;
+}
+
+.navigation {
+    background-color: #d77907;
+    border-bottom: 5px solid #4d5057;
+}
+
+.navigation ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.main {
+    background-color: #d3d3d3;
+    float: right;
+    min-height: 420px;
+    width: 75%;
+    border-left: 5px solid #4d5057;
+}
+
+.sidebar {
+    background-color: #e14a09;
+    min-height: 420px;
+}
+
+.footer {
+    background-color: #211F1E;
+    border-top: 5px solid #4d5057;
+    min-height: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer label {
+    color: #fff;
+    padding: 10px;
+    display: inline-block; 
+}
+
+.add-image{
+    text-align: center;
+}
+
+.add-image img{
+    display: inline;
+    margin-top: 20px;
+}
+
+.content {
+    margin-left: 36px;
+}
+
+.row {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.colm4 {
+    float: left;
+    margin-left: 10px;
+    width: 33.3%;
+    margin-top: 20px;
+}
+
+.colm3{
+    float: left;
+    margin-left: 10px;
+    width: 25%;
+    margin-top: 20px;
+}
+
+.content label {
+    float: right;
+}
+.radio {
+  float: right;
+}
+.radio2{
+    float: left;
+}
+
+.button {
+  background-color: #126412;
+  border: 1px solid #126412;
+  border-radius: 5px;
+  color: #fff;
+  float: right;
+  font-size: 20px;
+  margin-bottom: 14px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.game div {
+  background-color: #fff;
+  display: inline-block;
+  /*float: left;*/
+  /*margin-left: 12px;*/
+  padding: 15px;
+}
+
+.game {
+  display: inline-block;
+  width: 100%;
+}
+
+[data-drop-target] {
+  background-color: lightblue !important;
+  float: left;
+  height: 54px;
+  margin: 5px;
+  width: 5%;
+}
+
+#timer {
+  background-color: #ededed;
+  border: 1px solid #d3d33d;
+  border-radius: 4px;
+  float: right;
+  margin-right: 10px;
+  padding: 20px;
+}
+
+th {
+  background-color: #2E3F59;
+  padding: 10px;
+  width: 5%;
+  color: #fff;
+}
+
+#logdata {
+  
+  border-collapse: collapse;
+  margin: 20px;
+}
+
+td{
+    padding: 10px;
+    width: 5%; 
+}
+
+@media (max-width: 767px) {
+ .navigation ul li {
+  width: 100%;
+}   
+.navigation ul {
+  text-align: left;
+} 
+
+.main {
+    width: 100%;
+    min-height: 300px;
+    float: none;
+}
+
+.main h3 {
+  margin: 0;
+  padding-top: 7px;
+}
+.sidebar {
+    min-height: 300px;
+}
+}

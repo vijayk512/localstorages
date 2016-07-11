@@ -1,0 +1,154 @@
+/* 
+Student Info: Name=VijayPanwar, ID=16069
+Subject: CS557C_HW1_Summer_2016
+Author: vijay 
+Filename: hw2.css 
+Date and Time: Jun 8, 2016 12:32:39 PM 
+Project Name: webfrontend 
+*/ 
+/* 
+    Created on : Jun 8, 2016, 12:32:39 PM
+    Author     : vijay
+*/
+
+.header {
+    width: 100%;
+    background-color: #053649;
+    text-align: center;
+    height: 80px;
+
+}
+.header img {
+    width: 35%;
+}
+.footer {
+    background-color: #3b3649;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+.main {
+    background-color: #F3F0F0;
+    min-height: 300px;
+    width: 100%;
+    padding-bottom: 60px;
+
+}
+h2 {
+    margin: 0;
+    padding-top: 15px;
+    text-align: center;
+    color: rebeccapurple;
+    text-decoration: underline;
+}
+h3 {
+    text-align: center;
+    margin: 0px;
+    padding-top: 10px;
+}
+a {
+    color: red;
+    float: right;
+    position: absolute;
+    right: 15px;
+}
+.footer p {
+    color: ghostwhite;
+    float: right;
+    margin: 10px 20px 0 0;
+    padding-top: 10px;
+}
+
+.footer img {
+    width: 20%;
+    float: left;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.row {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.colm4 {
+    float: left;
+    margin-left: 10px;
+    width: 33.3%;
+    margin-top: 20px;
+}
+
+.colm6{
+    float: left;
+    margin-left: 10px;
+    width: 50%;
+    margin-top: 20px;
+}
+
+.colm3{
+    float: left;
+    margin-left: 10px;
+    width: 25%;
+    margin-top: 20px;
+}
+
+select{
+    padding: 5px;
+    width: 60%;
+    margin-left: 30px;
+}
+
+.carimage {
+    border: 2px solid #a9a9ad;
+    border-radius: 5px;
+    width: 60%;
+    margin-top: 26px;
+    height: 150px;
+}
+
+label {
+    float: left;
+    margin-left: 10px;
+}
+
+input[type='checkbox']{
+    float: left;
+    margin-left: 50px;
+}
+
+.row h3 {
+    color: brown;
+    padding-bottom: 12px;
+    text-decoration: underline;
+}
+
+input {
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.button {
+  background-color: lightslategray;
+  border: 1px solid #d3d3d3;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 20px;
+  padding: 6px;
+  width: 12%;
+}
+
+.output {
+  border: 1px solid #d3d3d3;
+  box-shadow: 10px 0 8px 3px #d3d3d3;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 20px;
+  padding: 10px;
+  position: relative;
+  width: 40%;
+}

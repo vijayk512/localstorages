@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!-- 
+Student Info: Name=VijayPanwar, ID=16069
+Subject: CS557C_HW1_Summer_2016
+Author: vijay 
+Filename: games.html 
+Date and Time: Jul 4, 2016 7:36:13 PM 
+Project Name: webfrontend 
+--> 
+<html>
+    <head>
+        <title>Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/hw3.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <script>
+            jQuery(document).ready(function () {
+                jQuery("#sidebar").load("sidebar.html");
+                var itemId = localStorage.getItem('AdminId');
+
+                if (itemId == null) {
+                    window.location.href = "login.html";
+                }
+                $("#getname").text("Player : " + itemId);
+
+            });
+        </script> 
+        <div class="header"><img src="img/hw3/logo1.png" ></div>
+        <div class="navigation">
+            <ul>
+                <li><a href="Vijay_16069_CS557C_HW3.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="logs.html">Logs</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="content">
+                <h3 id="getname">Player Peter.</h3>
+                <div class="game gameplay" id="gamediv">
+
+                </div>
+                <div class="game gameplay" id="gameplay">
+
+                </div>
+                <input type="button" value="Start Game" id="games" name="game" class="button games" style="float: left;">
+                <input type="button" value="New Game" id="newgame" name="newgame" class="button games" style="float: left; margin-left: 20px; display: none;">
+                <input type="button" value="Quit Game" id="quitgame" name="quitgame" class="button" style="float: left; margin-left: 20px; display: none;">
+                <input type="text" style="display: none" id="counterbox" value="">
+                <input type="text" style="display: none" id="counterword" value="">
+                <div id="timer">
+                    <input id="minutes" type="text" value="00" style="width: 20px; border: none; background-color:none; font-size: 16px; font-weight: bold;">:
+                    <input id="seconds" type="text" value="00" style="width: 26px; border: none; background-color:none; font-size: 16px; font-weight: bold;">
+                </div>
+            </div>
+        </div>
+        <div class="sidebar" id="sidebar">
+
+        </div>
+        <div class="footer">
+            <label>@ All right reserved 16069</label>
+        </div>
+        <script>
+            function handleDragStart(e) {
+                e.dataTransfer.setData("text", this.id);
+            }
+            function handleDragEnterLeave(e) {
+                if (e.type == "dragenter") {
+                    this.className = "drag-enter";
+
+
+                } else {
+                    this.className = "";
+                }
+
+            }
+            function handleOverDrop(e) {
+                e.preventDefault();
+                if (e.type != "drop") {
+                    return;
+
+                }
+                var draggedId = e.dataTransfer.getData("text");
+//                var inputdata = e.dataTransfer.getData("div input");
+
+                var draggedEl = document.getElementById(draggedId);
+                if (draggedEl.parentNode == this) {
+                    return;
+                }
+                draggedEl.parentNode.removeChild(draggedEl);
+                this.appendChild(draggedEl);
+                this.className = "";
+                someFunction(draggedId);
+            }
+            var outarray = [];
+            var cnt = 0;
+            jQuery(".games").click(function () {
+                jQuery("#gamediv").empty();
+                jQuery("#gameplay").empty();
+                $("#newgame").show();
+                $("#quitgame").show();
+                $("#games").hide();
+                quizarray = ["word", "yahoo", "google", "NPU", "apple"];
+                var random = Math.floor((Math.random() * 5));
+                var count = quizarray[random];
+//                var quizarray = [];
+//                alert(count)
+
+                String.prototype.shuffle = function () {
+                    return this.split(" ").map(function (word, i) {
+                        var a = word.split(""),
+                                n = a.length;
+
+                        for (var i = n - 1; i > 0; i--) {
+                            var j = Math.floor(Math.random() * (i + 1));
+                            var tmp = a[i];
+                            a[i] = a[j];
+                            a[j] = tmp;
+                        }
+
+                        return a.join("");
+                    }).join(" ");
+                }
+                outarray = count.shuffle()
+
+                for (var j = 0; j < outarray.length; j++) {
+                    var quizdata = '<div data-drop-target="true"><div id="quizid' + j + '" draggable="true">' + outarray[j] + '</div></div>';
+                    var quizmovedata = '<div data-drop-target="true" id="' + j + '"></div><input type="text" id="quizval' + j + '" style="display:none;">'
+                    jQuery("#gamediv").append(quizdata);
+                    jQuery("#gameplay").append(quizmovedata);
+
+                }
+
+                $("#counterbox").val(outarray.length);
+                $("#counterword").val(count);
+
+                var draggable = document.querySelectorAll("[draggable]");
+                var targets = document.querySelectorAll("[data-drop-target]");
+                for (var i = 0; i < draggable.length; i++) {
+                    draggable[i].addEventListener("dragstart", handleDragStart);
+                }
+                for (i = 0; i < targets.length; i++) {
+                    targets[i].addEventListener("dragover", handleOverDrop);
+                    targets[i].addEventListener("drop", handleOverDrop);
+                    targets[i].addEventListener("dragenter", handleDragEnterLeave);
+                    targets[i].addEventListener("dragleave", handleDragEnterLeave);
+                }
+
+                //var random = Math.floor((Math.random() * 9) + 1);
+//                timer();
+                countdown();
+            });
+
+            function someFunction(quizdata) {
+//                alert(quizdata);
+                var counterlength = $("#counterbox").val();
+                for (var k = 0; k < counterlength; k++) {
+
+                    if (quizdata == ("quizid" + k)) {
+                        $("#quizval" + k).val($("#quizid" + k).text());
+                        cnt = cnt + 1;
+                    }
+
+                }
+                if (cnt == counterlength) {
+                    checkword();
+                }
+            }
+
+            function checkword() {
+                var counterlength = $("#counterbox").val();
+                var counterword = $("#counterword").val();
+                var s = [];
+                for (var k = 0; k < counterlength; k++) {
+
+                    s.push($("#" + k + " > div").text());
+                }
+
+                var finalanswer = s.join("");
+                if (finalanswer == counterword) {
+                    alert("You win");
+                    savedatalocally("win");
+
+                } else {
+                    alert("You Loss");
+                    savedatalocally("loss");
+                }
+            }
+
+
+            var mins = 3.0;
+            var secs = mins * 60;
+            function countdown() {
+                setTimeout('Decrement()', 1000);
+            }
+            function Decrement() {
+                if (document.getElementById) {
+                    secs--;
+
+                    minutes = document.getElementById("minutes");
+                    seconds = document.getElementById("seconds");
+
+                    if (secs <= 0) {
+                        seconds.value = 0;
+                        savedatalocally("timeout");
+                    } else {
+                        // if less than a minute remaining
+                        if (secs < 59) {
+                            seconds.value = secs;
+                        } else {
+                            minutes.value = getminutes();
+                            seconds.value = getseconds();
+                        }
+                        setTimeout('Decrement()', 1000);
+                    }
+                }
+            }
+            function getminutes() {
+                // minutes is seconds divided by 60, rounded down
+                mins = Math.floor(secs / 60);
+                return mins;
+            }
+            function getseconds() {
+                // take mins remaining (as seconds) away from total seconds remaining
+                return secs - Math.round(mins * 60);
+            }
+
+            function savedatalocally(quizresult) {
+
+                var resultarray = [];
+                var newrecord = [];
+                var outputcheck = '';
+                var myarray = [];
+                var dt = new Date();
+                var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+                var itemId = localStorage.getItem('AdminId');
+                var username1 = itemId;
+                var starttime = dt.getMonth() + "/" + dt.getDate() + "/" + dt.getFullYear() + " - " + time;
+                var endttime = dt.getMonth() + "/" + dt.getDate() + "/" + dt.getFullYear() + " - " + time;
+                var word = jQuery("#counterword").val();
+                var result = quizresult;
+
+//                alert(localStorage.resultarray);
+//                if (localStorage.quizrecord.length != 0) {
+
+//                }
+
+                var userdata = JSON.parse(localStorage.resultarray);
+                for (var i = 0; i < userdata.length; i++) {
+                    outputcheck += "Object " + i + ":\r\n";
+                    for (var property in userdata[i]) {
+                        outputcheck += userdata[i][property]
+                        resultarray =
+                                {
+                                    name: userdata[i]['name'],
+                                    starttime: userdata[i]['starttime'],
+                                    endttime: userdata[i]['endttime'],
+                                    word: userdata[i]['word'],
+                                    result: userdata[i]['result'],
+                                }
+                    }
+
+                    myarray.push(resultarray)
+                }
+                newrecord = {
+                    name: username1,
+                    starttime: starttime,
+                    endttime: endttime,
+                    word: word,
+                    result: result,
+                }
+                myarray.push(newrecord);
+                localStorage.resultarray = JSON.stringify(myarray);
+
+            }
+
+            jQuery("#quitgame").click(function () {
+                savedatalocally("cancelled");
+            });
+
+        </script>
+    </body>
+</html>

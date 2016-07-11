@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- 
+Student Info: Name=VijayPanwar, ID=16069
+Subject: CS557C_HW1_Summer_2016
+Author: vijay 
+Filename: sidebar.html 
+Date and Time: Jul 4, 2016 6:19:05 PM 
+Project Name: webfrontend 
+--> 
+<div class="add-image">
+    <img src="img/hw3/adds/1.jpg" style="display: inline">
+</div>
+
+
+<script type="text/javascript">
+    jQuery(function(){
+        //prepare Your data array with img urls
+        var dataArray=new Array();
+        dataArray[1]="img/hw3/adds/2.jpg";
+        dataArray[2]="img/hw3/adds/3.jpg";
+        dataArray[3]="img/hw3/adds/1.jpg";
+
+        //start with id=0 after 5 seconds
+        var thisId=0;
+
+        window.setInterval(function(){
+            jQuery('.add-image img').attr('src',dataArray[thisId]);
+            thisId++; //increment data array id
+//            console.log(thisId);
+            if (thisId==3) thisId=0; //repeat from start
+        },2000);        
+    });
+</script>
